@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Most common muscle-strengthening activities among Australian adults.",
+  "width": 650,
+  "height": 380,
+  "data": {
+    "url": "data_clean/common_strength_activities.csv"
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "y": {
+      "field": "Activity",
+      "type": "nominal",
+      "sort": "-x",
+      "title": "Activity"
+    },
+    "x": {
+      "field": "Participation",
+      "type": "quantitative",
+      "title": "Participation (%)"
+    },
+    "color": {
+      "condition": {
+        "test": "datum.Activity == 'Gym workout'",
+        "value": "#16a34a"
+      },
+      "value": "#94a3b8"
+    },
+    "tooltip": [
+      {
+        "field": "Activity",
+        "type": "nominal"
+      },
+      {
+        "field": "Participation",
+        "type": "quantitative",
+        "title": "Participation (%)"
+      }
+    ]
+  }
+}

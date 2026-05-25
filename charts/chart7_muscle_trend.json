@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Trend in adults meeting the muscle-strengthening guideline by sex.",
+  "width": 650,
+  "height": 360,
+  "data": {
+    "values": [
+      {"year": 2016, "sex": "Male", "percentage": 40.4},
+      {"year": 2017, "sex": "Male", "percentage": 44.5},
+      {"year": 2018, "sex": "Male", "percentage": 43.9},
+      {"year": 2016, "sex": "Female", "percentage": 32.0},
+      {"year": 2017, "sex": "Female", "percentage": 35.2},
+      {"year": 2018, "sex": "Female", "percentage": 35.7}
+    ]
+  },
+  "mark": {
+    "type": "line",
+    "point": true,
+    "strokeWidth": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "sort": [2016, 2017, 2018],
+      "title": "Year"
+    },
+    "y": {
+      "field": "percentage",
+      "type": "quantitative",
+      "title": "Adults meeting guideline (%)",
+      "scale": {
+        "domain": [25, 50]
+      }
+    },
+    "color": {
+      "field": "sex",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Male", "Female"],
+        "range": ["#2563eb", "#16a34a"]
+      },
+      "title": "Sex"
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {"field": "sex", "type": "nominal", "title": "Sex"},
+      {"field": "percentage", "type": "quantitative", "title": "Percentage (%)"}
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Fitness/Gym participation by age group among Australian adults.",
+  "width": 650,
+  "height": 360,
+  "data": {
+    "url": "data_clean/fitness_age_groups.csv"
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "y": {
+      "field": "Age_Group",
+      "type": "ordinal",
+      "sort": ["18-24", "25-34", "15-17", "35-44", "45-54", "55-64", "65+"],
+      "title": "Age group"
+    },
+    "x": {
+      "field": "Participation",
+      "type": "quantitative",
+      "title": "Participation rate (%)"
+    },
+    "color": {
+      "field": "Participation",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "greens"
+      },
+      "legend": null
+    },
+    "tooltip": [
+      {
+        "field": "Age_Group",
+        "type": "ordinal",
+        "title": "Age group"
+      },
+      {
+        "field": "Participation",
+        "type": "quantitative",
+        "title": "Participation (%)"
+      }
+    ]
+  }
+}

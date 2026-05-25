@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Australian powerlifting records by sex from 2010 to 2025.",
+  "width": 500,
+  "height": 320,
+  "data": {
+    "url": "data_clean/powerlifting_gender.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.sex == 'M' ? 'Male' : datum.sex == 'F' ? 'Female' : 'Mx'",
+      "as": "sex_label"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "x": {
+      "field": "sex_label",
+      "type": "nominal",
+      "title": "Sex"
+    },
+    "y": {
+      "field": "lifters",
+      "type": "quantitative",
+      "title": "Number of records"
+    },
+    "color": {
+      "field": "sex_label",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Male", "Female", "Mx"],
+        "range": ["#2563eb", "#16a34a", "#94a3b8"]
+      },
+      "legend": null
+    },
+    "tooltip": [
+      {
+        "field": "sex_label",
+        "type": "nominal",
+        "title": "Sex"
+      },
+      {
+        "field": "lifters",
+        "type": "quantitative",
+        "title": "Records"
+      }
+    ]
+  }
+}

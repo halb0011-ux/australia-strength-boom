@@ -1,0 +1,66 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Map of organised Fitness/Gym participation by Australian state and territory.",
+  "width": 650,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.geojson",
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.STATE_NAME",
+      "from": {
+        "data": {
+          "url": "data_clean/state_fitness_participation.csv"
+        },
+        "key": "state",
+        "fields": ["total", "male", "female"]
+      }
+    }
+  ],
+  "projection": {
+    "type": "mercator"
+  },
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "color": {
+      "field": "total",
+      "type": "quantitative",
+      "title": "Participation (%)",
+      "scale": {
+        "scheme": "greens",
+        "domain": [10, 20]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.STATE_NAME",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "total",
+        "type": "quantitative",
+        "title": "Total (%)"
+      },
+      {
+        "field": "male",
+        "type": "quantitative",
+        "title": "Male (%)"
+      },
+      {
+        "field": "female",
+        "type": "quantitative",
+        "title": "Female (%)"
+      }
+    ]
+  }
+}

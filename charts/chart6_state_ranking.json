@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Organised Fitness/Gym participation by Australian state and territory.",
+  "width": 650,
+  "height": 360,
+  "data": {
+    "url": "data_clean/state_fitness_participation.csv"
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "sort": "-x",
+      "title": "State/Territory"
+    },
+    "x": {
+      "field": "total",
+      "type": "quantitative",
+      "title": "Organised participation rate (%)",
+      "scale": {
+        "domain": [0, 20]
+      }
+    },
+    "color": {
+      "field": "total",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "greens"
+      },
+      "legend": null
+    },
+    "tooltip": [
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State/Territory"
+      },
+      {
+        "field": "total",
+        "type": "quantitative",
+        "title": "Total (%)"
+      },
+      {
+        "field": "male",
+        "type": "quantitative",
+        "title": "Male (%)"
+      },
+      {
+        "field": "female",
+        "type": "quantitative",
+        "title": "Female (%)"
+      }
+    ]
+  }
+}

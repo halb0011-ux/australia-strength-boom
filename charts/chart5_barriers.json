@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Main barriers to participation in sport and physical activity among Australian adults.",
+  "width": 650,
+  "height": 360,
+  "data": {
+    "url": "data_clean/fitness_barriers.csv"
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "y": {
+      "field": "Barrier",
+      "type": "nominal",
+      "sort": "-x",
+      "title": "Barrier"
+    },
+    "x": {
+      "field": "Percentage",
+      "type": "quantitative",
+      "title": "Percentage of non-participants (%)"
+    },
+    "color": {
+      "field": "Percentage",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "orangered"
+      },
+      "legend": null
+    },
+    "tooltip": [
+      {
+        "field": "Barrier",
+        "type": "nominal"
+      },
+      {
+        "field": "Percentage",
+        "type": "quantitative",
+        "title": "Percentage (%)"
+      }
+    ]
+  }
+}

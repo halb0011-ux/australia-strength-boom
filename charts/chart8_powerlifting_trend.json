@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Australian powerlifting records by year from OpenPowerlifting.",
+  "width": 650,
+  "height": 360,
+  "data": {
+    "url": "data_clean/powerlifting_australia_by_year.csv"
+  },
+  "mark": {
+    "type": "line",
+    "point": true,
+    "strokeWidth": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "Lifters",
+      "type": "quantitative",
+      "title": "Number of records"
+    },
+    "color": {
+      "value": "#16a34a"
+    },
+    "tooltip": [
+      {
+        "field": "Year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "Lifters",
+        "type": "quantitative",
+        "title": "Records"
+      }
+    ]
+  }
+}

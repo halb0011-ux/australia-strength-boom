@@ -1,0 +1,148 @@
+.intro {
+  padding: 50px 12%;
+  background: #111827;
+  border-bottom: 1px solid #1f2937;
+}
+
+.intro h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.intro p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #cbd5e1;
+  max-width: 900px;
+}
+
+.takeaway {
+  background: #064e3b;
+  border-radius: 18px;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.footer {
+  padding: 50px 12%;
+  background: #020617;
+  color: #cbd5e1;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.footer h2 {
+  color: #ffffff;
+}
+
+.footer p {
+  max-width: 1000px;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+.hero {
+  padding: 80px 12%;
+  background: linear-gradient(135deg, #111827, #064e3b);
+}
+
+.hero h1 {
+  font-size: 56px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 22px;
+  color: #d1fae5;
+}
+
+.section {
+  padding: 60px 12%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.section h2 {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.section p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+#chart1 {
+  margin-top: 30px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+#chart2 {
+  margin-top: 30px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+#chart3 {
+  margin-top: 30px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+#chart4 {
+  margin-top: 30px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+#chart5 {
+  margin-top: 30px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+#chart6 {
+  margin-top: 30px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+#chart7 {
+  margin-top: 30px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+#chart8 {
+  margin-top: 30px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+#chart9 {
+  margin-top: 30px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+#chart10 {
+  margin-top: 30px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+}

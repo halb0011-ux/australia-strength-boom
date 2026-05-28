@@ -1,6 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Trend in adults meeting the muscle-strengthening guideline by sex.",
+  "title": {
+  "text": "Adults Meeting Muscle-Strengthening Guidelines",
+  "subtitle": "Percentage of adults aged 18–64 meeting the guideline, AIHW 2016–2018",
+  "anchor": "middle",
+  "fontSize": 18,
+  "subtitleFontSize": 12,
+  "fontWeight": "bold",
+  "offset": 15
+},
   "width": 650,
   "height": 360,
   "data": {

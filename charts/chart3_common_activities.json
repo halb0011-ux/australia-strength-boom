@@ -1,6 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Most common muscle-strengthening activities among Australian adults.",
+  "title": {
+  "text": "Gym Workouts Dominate Strength Activity",
+  "subtitle": "Most common muscle-strengthening activities among Australian adults",
+  "anchor": "middle",
+  "fontSize": 18,
+  "subtitleFontSize": 12,
+  "fontWeight": "bold",
+  "offset": 15
+},
   "width": 650,
   "height": 380,
   "data": {

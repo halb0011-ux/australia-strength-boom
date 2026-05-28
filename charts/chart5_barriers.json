@@ -1,45 +1,119 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Main barriers to participation in sport and physical activity among Australian adults.",
-  "width": 650,
-  "height": 360,
+  "description": "Dot plot showing barriers to participation in sport and physical activity.",
+  "title": {
+    "text": "What Stops Australians From Participating?",
+    "subtitle": "Main barriers reported by non-participants",
+    "anchor": "middle",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "fontWeight": "bold",
+    "offset": 15
+  },
+  "width": 680,
+  "height": 390,
   "data": {
     "url": "data_clean/fitness_barriers.csv"
   },
-  "mark": {
-    "type": "bar",
-    "cornerRadiusEnd": 4
-  },
   "encoding": {
     "y": {
-      "field": "Barrier",
+      "field": "barrier",
       "type": "nominal",
-      "sort": "-x",
+      "sort": [
+        "Poor health or injury",
+        "Increasing age/too old",
+        "Too lazy",
+        "Disability",
+        "Don't like sport/physical activity",
+        "Not enough time/commitments",
+        "Not a priority"
+      ],
       "title": "Barrier"
     },
     "x": {
-      "field": "Percentage",
+      "field": "percentage",
       "type": "quantitative",
-      "title": "Percentage of non-participants (%)"
-    },
-    "color": {
-      "field": "Percentage",
-      "type": "quantitative",
+      "title": "Percentage of non-participants (%)",
       "scale": {
-        "scheme": "orangered"
-      },
-      "legend": null
-    },
-    "tooltip": [
-      {
-        "field": "Barrier",
-        "type": "nominal"
-      },
-      {
-        "field": "Percentage",
-        "type": "quantitative",
-        "title": "Percentage (%)"
+        "domain": [0, 30]
       }
-    ]
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "size": 260,
+        "opacity": 0.9
+      },
+      "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.barrier == 'Poor health or injury'",
+            "value": "#dc2626"
+          },
+          "value": "#64748b"
+        },
+        "tooltip": [
+          {
+            "field": "barrier",
+            "type": "nominal",
+            "title": "Barrier"
+          },
+          {
+            "field": "percentage",
+            "type": "quantitative",
+            "title": "Percentage (%)"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 14,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#111827"
+      },
+      "encoding": {
+        "text": {
+          "field": "percentage",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.barrier == 'Poor health or injury'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 50,
+        "dy": -12,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#991b1b"
+      },
+      "encoding": {
+        "text": {
+          "value": "Top barrier"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    }
   }
 }

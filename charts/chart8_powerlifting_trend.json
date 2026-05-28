@@ -1,41 +1,178 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Australian powerlifting records by year from OpenPowerlifting.",
-  "width": 650,
-  "height": 360,
+  "description": "Annotated Australian powerlifting records by year from OpenPowerlifting.",
+  "title": {
+  "text": "Australian Powerlifting Records Over Time",
+  "subtitle": "OpenPowerlifting records for Australia, 2010–2025",
+  "anchor": "middle",
+  "fontSize": 18,
+  "subtitleFontSize": 12,
+  "fontWeight": "bold",
+  "offset": 15
+},
+  "width": 720,
+  "height": 380,
   "data": {
     "url": "data_clean/powerlifting_australia_by_year.csv"
   },
-  "mark": {
-    "type": "line",
-    "point": true,
-    "strokeWidth": 3
-  },
-  "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "ordinal",
-      "title": "Year"
-    },
-    "y": {
-      "field": "Lifters",
-      "type": "quantitative",
-      "title": "Number of records"
-    },
-    "color": {
-      "value": "#16a34a"
-    },
-    "tooltip": [
-      {
-        "field": "Year",
-        "type": "ordinal",
-        "title": "Year"
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "start": 2020,
+            "end": 2021
+          }
+        ]
       },
-      {
-        "field": "Lifters",
-        "type": "quantitative",
-        "title": "Records"
+      "mark": {
+        "type": "rect",
+        "opacity": 0.15,
+        "color": "#f97316"
+      },
+      "encoding": {
+        "x": {
+          "field": "start",
+          "type": "ordinal"
+        },
+        "x2": {
+          "field": "end"
+        }
       }
-    ]
+    },
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "color": "#16a34a"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        "y": {
+          "field": "Lifters",
+          "type": "quantitative",
+          "title": "Number of records"
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "Lifters",
+            "type": "quantitative",
+            "title": "Records"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 80,
+        "color": "#16a34a"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "Lifters",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "Lifters",
+            "type": "quantitative",
+            "title": "Records"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Year": 2020,
+            "Lifters": 1972,
+            "label": "2020 dip"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": -8,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#064e3b"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "Lifters",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Year": 2021,
+            "Lifters": 6800,
+            "label": "COVID-era disruption"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#c2410c"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "Lifters",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+  "config": {
+    "axis": {
+      "labelFontSize": 11,
+      "titleFontSize": 13
+    },
+    "view": {
+      "stroke": null
+    }
   }
 }

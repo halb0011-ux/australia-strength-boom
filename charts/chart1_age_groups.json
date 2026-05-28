@@ -1,6 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Fitness/Gym participation by age group among Australian adults.",
+  "title": {
+  "text": "Fitness/Gym Participation by Age Group",
+  "subtitle": "Adult participation rate, AusPlay January–December 2025",
+  "anchor": "middle",
+  "fontSize": 18,
+  "subtitleFontSize": 12,
+  "fontWeight": "bold",
+  "offset": 15
+},
   "width": 650,
   "height": 360,
   "data": {

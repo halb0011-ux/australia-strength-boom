@@ -1,0 +1,272 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dumbbell chart comparing male and female organised Fitness/Gym participation by state and territory.",
+  "title": {
+  "text": "Male vs Female Organised Fitness/Gym Participation",
+  "subtitle": "Dumbbell comparison by state and territory, AusPlay 2025",
+  "anchor": "middle",
+  "fontSize": 18,
+  "subtitleFontSize": 12,
+  "fontWeight": "bold",
+  "offset": 15
+},
+  "width": 760,
+  "height": 440,
+  "data": {
+    "url": "data_clean/state_fitness_participation.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.female - datum.male",
+      "as": "gap"
+    },
+    {
+      "calculate": "'+' + format(datum.gap, '.1f') + ' pp'",
+      "as": "gap_label"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#cbd5e1",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "female",
+            "order": "descending"
+          },
+          "title": "State/Territory"
+        },
+        "x": {
+          "field": "male",
+          "type": "quantitative",
+          "title": "Organised Fitness/Gym participation (%)",
+          "scale": {
+            "domain": [4, 29]
+          }
+        },
+        "x2": {
+          "field": "female"
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State/Territory"},
+          {"field": "male", "type": "quantitative", "title": "Male (%)"},
+          {"field": "female", "type": "quantitative", "title": "Female (%)"},
+          {"field": "gap", "type": "quantitative", "title": "Gap (pp)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 150,
+        "color": "#2563eb",
+        "opacity": 0.95
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "female",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "male",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State/Territory"},
+          {"field": "male", "type": "quantitative", "title": "Male (%)"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 150,
+        "color": "#16a34a",
+        "opacity": 0.95
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "female",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "female",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State/Territory"},
+          {"field": "female", "type": "quantitative", "title": "Female (%)"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -8,
+        "fontSize": 11,
+        "color": "#1d4ed8"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "female",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "male",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "male",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#166534"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "female",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "female",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "female",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dy": -12,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#475569"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "female",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "female",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "gap_label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"x": 9, "y": "Australian Capital Territory", "label": "Male"},
+          {"x": 26.8, "y": "Australian Capital Territory", "label": "Female"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 13,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {
+          "field": "y",
+          "type": "nominal",
+          "sort": {
+            "field": "female",
+            "order": "descending"
+          }
+        },
+        "text": {"field": "label"},
+        "color": {
+          "condition": {
+            "test": "datum.label == 'Male'",
+            "value": "#2563eb"
+          },
+          "value": "#16a34a"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Australian Capital Territory",
+            "x": 28.2,
+            "label": "Largest female advantage: +12.1 percentage points"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#065f46"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "female",
+            "order": "descending"
+          }
+        },
+        "x": {"field": "x", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    }
+  ],
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "view": {
+      "stroke": null
+    }
+  }
+}

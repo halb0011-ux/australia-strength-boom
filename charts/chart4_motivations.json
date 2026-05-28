@@ -1,45 +1,118 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Main motivations for participation in sport and physical activity.",
-  "width": 650,
-  "height": 330,
+  "description": "Dot plot showing main motivations for participation in sport and physical activity.",
+  "title": {
+    "text": "Why Australians Participate",
+    "subtitle": "Main motivations for sport and physical activity participation",
+    "anchor": "middle",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "fontWeight": "bold",
+    "offset": 15
+  },
+  "width": 680,
+  "height": 360,
   "data": {
     "url": "data_clean/fitness_motivations.csv"
   },
-  "mark": {
-    "type": "bar",
-    "cornerRadiusEnd": 4
-  },
   "encoding": {
     "y": {
-      "field": "Motivation",
+      "field": "motivation",
       "type": "nominal",
-      "sort": "-x",
+      "sort": [
+        "Physical health/fitness",
+        "Hobby/fun",
+        "Sense of achievement",
+        "Training purposes",
+        "Way of getting around",
+        "To be a good role model"
+      ],
       "title": "Motivation"
     },
     "x": {
-      "field": "Percentage",
+      "field": "percentage",
       "type": "quantitative",
-      "title": "Participation rate (%)"
-    },
-    "color": {
-      "field": "Percentage",
-      "type": "quantitative",
+      "title": "Participation rate (%)",
       "scale": {
-        "scheme": "tealblues"
-      },
-      "legend": null
-    },
-    "tooltip": [
-      {
-        "field": "Motivation",
-        "type": "nominal"
-      },
-      {
-        "field": "Percentage",
-        "type": "quantitative",
-        "title": "Percentage (%)"
+        "domain": [0, 40]
       }
-    ]
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "size": 260,
+        "opacity": 0.9
+      },
+      "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.motivation == 'Physical health/fitness'",
+            "value": "#16a34a"
+          },
+          "value": "#64748b"
+        },
+        "tooltip": [
+          {
+            "field": "motivation",
+            "type": "nominal",
+            "title": "Motivation"
+          },
+          {
+            "field": "percentage",
+            "type": "quantitative",
+            "title": "Percentage (%)"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 14,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#111827"
+      },
+      "encoding": {
+        "text": {
+          "field": "percentage",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.motivation == 'Physical health/fitness'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 50,
+        "dy": -12,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#065f46"
+      },
+      "encoding": {
+        "text": {
+          "value": "Top motivation"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    }
   }
 }

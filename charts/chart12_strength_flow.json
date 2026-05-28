@@ -1,0 +1,151 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Custom flow diagram connecting gym participation, muscle-strengthening activity, and organised powerlifting.",
+  "title": {
+    "text": "How Strength Culture Builds",
+    "subtitle": "From everyday gym participation to organised lifting communities",
+    "anchor": "middle",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "fontWeight": "bold",
+    "offset": 15
+  },
+  "width": 760,
+  "height": 300,
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {"x": 190, "y": 150, "x2": 300, "y2": 150},
+          {"x": 460, "y": 150, "x2": 570, "y2": 150}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "stroke": "#64748b",
+        "strokeWidth": 4
+      },
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "axis": null, "scale": {"domain": [0, 760]}},
+        "x2": {"field": "x2"},
+        "y": {"field": "y", "type": "quantitative", "axis": null, "scale": {"domain": [0, 300]}}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"x": 300, "y": 150, "text": "▶"},
+          {"x": 570, "y": 150, "text": "▶"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 22,
+        "fontWeight": "bold",
+        "color": "#64748b"
+      },
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "axis": null, "scale": {"domain": [0, 760]}},
+        "y": {"field": "y", "type": "quantitative", "axis": null, "scale": {"domain": [0, 300]}},
+        "text": {"field": "text"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"x": 95, "y": 150, "stage": "Fitness/Gym", "value": "34.1%", "note": "Adults participating"},
+          {"x": 380, "y": 150, "stage": "Strength habits", "value": "36.3%", "note": "Gym workout leads"},
+          {"x": 665, "y": 150, "stage": "Powerlifting", "value": "7,521", "note": "2024 record peak"}
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "width": 170,
+        "height": 115,
+        "cornerRadius": 12,
+        "stroke": "#e5e7eb",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "axis": null, "scale": {"domain": [0, 760]}},
+        "y": {"field": "y", "type": "quantitative", "axis": null, "scale": {"domain": [0, 300]}},
+        "color": {
+          "field": "stage",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Fitness/Gym", "Strength habits", "Powerlifting"],
+            "range": ["#2563eb", "#16a34a", "#f97316"]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "stage", "type": "nominal", "title": "Stage"},
+          {"field": "value", "type": "nominal", "title": "Key value"},
+          {"field": "note", "type": "nominal", "title": "Meaning"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"x": 95, "y": 118, "text": "Fitness/Gym"},
+          {"x": 380, "y": 118, "text": "Strength habits"},
+          {"x": 665, "y": 118, "text": "Powerlifting"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 15,
+        "fontWeight": "bold",
+        "color": "white"
+      },
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "axis": null, "scale": {"domain": [0, 760]}},
+        "y": {"field": "y", "type": "quantitative", "axis": null, "scale": {"domain": [0, 300]}},
+        "text": {"field": "text"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"x": 95, "y": 150, "text": "34.1%"},
+          {"x": 380, "y": 150, "text": "36.3%"},
+          {"x": 665, "y": 150, "text": "7,521"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 28,
+        "fontWeight": "bold",
+        "color": "white"
+      },
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "axis": null, "scale": {"domain": [0, 760]}},
+        "y": {"field": "y", "type": "quantitative", "axis": null, "scale": {"domain": [0, 300]}},
+        "text": {"field": "text"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"x": 95, "y": 180, "text": "mainstream activity"},
+          {"x": 380, "y": 180, "text": "training behaviour"},
+          {"x": 665, "y": 180, "text": "organised records"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "color": "white"
+      },
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "axis": null, "scale": {"domain": [0, 760]}},
+        "y": {"field": "y", "type": "quantitative", "axis": null, "scale": {"domain": [0, 300]}},
+        "text": {"field": "text"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

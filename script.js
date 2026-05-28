@@ -8,3 +8,4 @@ vegaEmbed("#chart7", "charts/chart7_muscle_trend.json");
 vegaEmbed("#chart8", "charts/chart8_powerlifting_trend.json");
 vegaEmbed("#chart9", "charts/chart9_powerlifting_gender.json");
 vegaEmbed("#chart10", "charts/chart10_map.json");
+vegaEmbed("#chart11", "charts/chart11_dumbbell_gender_state.json");

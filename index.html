@@ -27,6 +27,10 @@
   </section>
   
   <main>
+    <section class="story-divider">
+      <h2>Who is driving the boom?</h2>
+      <p>Younger adults and strong female participation shape Australia’s current gym culture.</p>
+</section>
     <section class="section">
       <h2>Young adults are driving Australia’s gym culture</h2>
       <p>
@@ -54,6 +58,10 @@
 
       <div id="chart3"></div>
     </section>
+    <section class="story-divider">
+  <h2>Why do Australians train?</h2>
+  <p>The data shows that fitness is connected to health, enjoyment, achievement, and personal goals.</p>
+</section>
     <section class="section">
       <h2>Australians train for health, enjoyment, and achievement</h2>
       <p>
@@ -90,11 +98,15 @@
 
       <div id="chart7"></div>
     </section>
+   <section class="story-divider">
+      <h2>How does gym culture connect to powerlifting?</h2>
+      <p>Recreational strength training connects to organised lifting communities and competition records.</p>
+    </section> 
     <section class="section">
       <h2>Powerlifting records show a strong rise after 2010</h2>
       <p>
-        OpenPowerlifting data shows a sharp increase in Australian powerlifting entries from 2010 to 2025,
-        with a clear dip during 2020–2021 and a strong rebound afterwards.
+        OpenPowerlifting records show strong growth in Australian powerlifting entries from 2010 to 2025.
+        The shaded area highlights the COVID-era disruption, followed by a strong rebound and a peak in 2024.
       </p>
 
       <div id="chart8"></div>
@@ -108,7 +120,10 @@
 
     <div id="chart9"></div>
   </section>
-
+<section class="story-divider">
+  <h2>Where is participation strongest?</h2>
+  <p>State and territory differences show that organised Fitness/Gym participation is not evenly distributed.</p>
+</section>
   <section class="section">
       <h2>Organised Fitness/Gym participation varies across Australia</h2>
       <p>
@@ -118,6 +133,16 @@
 
   <div id="chart10"></div>
 </section>
+<section class="section">
+  <h2>Women lead organised Fitness/Gym participation in every state</h2>
+  <p>
+    This dumbbell chart compares male and female organised Fitness/Gym participation across
+    states and territories. The connecting line shows the gap between the two groups.
+  </p>
+
+  <div id="chart11"></div>
+</section>
+
 <section class="section takeaway">
   <h2>Final takeaway</h2>
   <p>
@@ -132,21 +157,38 @@
 <footer class="footer">
   <h2>Sources and metadata</h2>
 
-  <p><strong>Author:</strong> Hamdan</p>
+  <p><strong>Author:</strong> Hamdan Albreiki</p>
+  <p><strong>Student ID:</strong> 33262810</p>
   <p><strong>Date:</strong> May 2026</p>
 
   <p><strong>Data sources:</strong></p>
   <ul>
-    <li>Australian Sports Commission — AusPlay January–December 2025 Data Tables</li>
-    <li>Australian Institute of Health and Welfare — Muscle-strengthening activities supplementary tables</li>
-    <li>OpenPowerlifting — Bulk CSV dataset</li>
-    <li>Australian states GeoJSON boundary file by Rowan Hogan</li>
+    <li>
+      Australian Sports Commission — AusPlay January–December 2025 Data Tables, released 30 April 2026:
+      <br>
+      https://www.ausport.gov.au/clearinghouse/research/ausplay/results
+    </li>
+    <li>
+      Australian Institute of Health and Welfare — Muscle-strengthening activities supplementary tables, based on AusPlay 2016–2018 data:
+      <br>
+      https://www.aihw.gov.au/reports/physical-activity/muscle-strengthening-activities
+    </li>
+    <li>
+      OpenPowerlifting — Bulk CSV dataset, used for Australian powerlifting records from 2010–2025:
+      <br>
+      https://openpowerlifting.gitlab.io/opl-csv/bulk-csv-docs.html
+    </li>
+    <li>
+      Australian states GeoJSON boundary file by Rowan Hogan:
+      <br>
+      https://github.com/rowanhogan/australian-states
+    </li>
   </ul>
 
   <p><strong>Tools used:</strong> Vega-Lite, HTML, CSS, JavaScript, Visual Studio Code, GitHub Pages.</p>
 
-  <p><strong>AI acknowledgement:</strong> Generative AI was used for coding guidance, wording support, and debugging assistance. The final data extraction, design choices, and implementation were reviewed and completed by Hamdan.</p>
+  <p><strong>AI acknowledgement:</strong> Generative AI was used for coding guidance, wording support, chart debugging, and layout suggestions. The final data extraction, design choices, implementation, and submission decisions were reviewed and completed by the author.</p>
 </footer>
-  <script src="script.js"></script>
+ <script src="script.js"></script>
 </body>
 </html>

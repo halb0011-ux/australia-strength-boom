@@ -1,5 +1,4 @@
 vegaEmbed("#chart1", "charts/chart1_age_groups.json");
-vegaEmbed("#chart2", "charts/chart2_gender.json");
 vegaEmbed("#chart3", "charts/chart3_common_activities.json");
 vegaEmbed("#chart4", "charts/chart4_motivations.json");
 vegaEmbed("#chart5", "charts/chart5_barriers.json");
@@ -9,3 +8,4 @@ vegaEmbed("#chart8", "charts/chart8_powerlifting_trend.json");
 vegaEmbed("#chart9", "charts/chart9_powerlifting_gender.json");
 vegaEmbed("#chart10", "charts/chart10_map.json");
 vegaEmbed("#chart11", "charts/chart11_dumbbell_gender_state.json");
+vegaEmbed("#chart12", "charts/chart12_strength_flow.json");

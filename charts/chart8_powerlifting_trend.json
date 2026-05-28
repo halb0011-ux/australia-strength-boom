@@ -10,8 +10,8 @@
   "fontWeight": "bold",
   "offset": 15
 },
-  "width": 720,
-  "height": 380,
+  "width": 900,
+  "height": 420,
   "data": {
     "url": "data_clean/powerlifting_australia_by_year.csv"
   },

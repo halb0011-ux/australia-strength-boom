@@ -10,8 +10,8 @@
   "fontWeight": "bold",
   "offset": 15
 },
-  "width": 650,
-  "height": 360,
+  "width": 900,
+  "height": 460,
   "data": {
     "url": "data_clean/fitness_age_groups.csv"
   },

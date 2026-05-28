@@ -10,8 +10,8 @@
     "fontWeight": "bold",
     "offset": 15
   },
-  "width": 430,
-  "height": 430,
+  "width": 900,
+  "height": 460,
   "data": {
     "url": "data_clean/powerlifting_gender.csv"
   },

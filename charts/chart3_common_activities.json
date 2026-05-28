@@ -1,53 +1,229 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Most common muscle-strengthening activities among Australian adults.",
+  "description": "Ranked tile chart showing common muscle-strengthening activities among Australian adults.",
   "title": {
-  "text": "Gym Workouts Dominate Strength Activity",
-  "subtitle": "Most common muscle-strengthening activities among Australian adults",
-  "anchor": "middle",
-  "fontSize": 18,
-  "subtitleFontSize": 12,
-  "fontWeight": "bold",
-  "offset": 15
-},
-  "width": 650,
-  "height": 380,
+    "text": "Gym Workouts Dominate Strength Activity",
+    "subtitle": "Ranked activity cards based on participation percentage",
+    "anchor": "middle",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "fontWeight": "bold",
+    "offset": 15
+  },
+  "width": 900,
+  "height": 430,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
   "data": {
     "url": "data_clean/common_strength_activities.csv"
   },
-  "mark": {
-    "type": "bar",
-    "cornerRadiusEnd": 4
-  },
-  "encoding": {
-    "y": {
-      "field": "Activity",
-      "type": "nominal",
-      "sort": "-x",
-      "title": "Activity"
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "Participation",
+          "order": "descending"
+        }
+      ]
     },
-    "x": {
-      "field": "Participation",
-      "type": "quantitative",
-      "title": "Participation (%)"
+    {
+      "calculate": "(datum.rank - 1) % 3",
+      "as": "col"
     },
-    "color": {
-      "condition": {
-        "test": "datum.Activity == 'Gym workout'",
-        "value": "#16a34a"
+    {
+      "calculate": "floor((datum.rank - 1) / 3)",
+      "as": "row"
+    },
+    {
+      "calculate": "'#' + datum.rank",
+      "as": "rank_label"
+    },
+    {
+      "calculate": "format(datum.Participation, '.1f') + '%'",
+      "as": "value_label"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "cornerRadius": 14,
+        "stroke": "#ffffff",
+        "strokeWidth": 3
       },
-      "value": "#94a3b8"
-    },
-    "tooltip": [
-      {
-        "field": "Activity",
-        "type": "nominal"
-      },
-      {
-        "field": "Participation",
-        "type": "quantitative",
-        "title": "Participation (%)"
+      "encoding": {
+        "x": {
+          "field": "col",
+          "type": "ordinal",
+          "axis": null
+        },
+        "y": {
+          "field": "row",
+          "type": "ordinal",
+          "axis": null
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Activity == 'Gym workout'",
+            "value": "#16a34a"
+          },
+          "field": "Participation",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "blues"
+          },
+          "legend": {
+            "title": "Participation (%)"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "rank",
+            "type": "quantitative",
+            "title": "Rank"
+          },
+          {
+            "field": "Activity",
+            "type": "nominal",
+            "title": "Activity"
+          },
+          {
+            "field": "Participation",
+            "type": "quantitative",
+            "title": "Participation (%)"
+          }
+        ]
       }
-    ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "dx": -120,
+        "dy": -54,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "white"
+      },
+      "encoding": {
+        "x": {
+          "field": "col",
+          "type": "ordinal",
+          "axis": null
+        },
+        "y": {
+          "field": "row",
+          "type": "ordinal",
+          "axis": null
+        },
+        "text": {
+          "field": "rank_label"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "dy": -10,
+        "fontSize": 15,
+        "fontWeight": "bold",
+        "color": "white"
+      },
+      "encoding": {
+        "x": {
+          "field": "col",
+          "type": "ordinal",
+          "axis": null
+        },
+        "y": {
+          "field": "row",
+          "type": "ordinal",
+          "axis": null
+        },
+        "text": {
+          "field": "Activity"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "dy": 22,
+        "fontSize": 25,
+        "fontWeight": "bold",
+        "color": "white"
+      },
+      "encoding": {
+        "x": {
+          "field": "col",
+          "type": "ordinal",
+          "axis": null
+        },
+        "y": {
+          "field": "row",
+          "type": "ordinal",
+          "axis": null
+        },
+        "text": {
+          "field": "value_label"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Activity == 'Gym workout'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": 58,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "white"
+      },
+      "encoding": {
+        "x": {
+          "field": "col",
+          "type": "ordinal",
+          "axis": null
+        },
+        "y": {
+          "field": "row",
+          "type": "ordinal",
+          "axis": null
+        },
+        "text": {
+          "value": "Dominant activity"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "grid": false
+    },
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
   }
 }

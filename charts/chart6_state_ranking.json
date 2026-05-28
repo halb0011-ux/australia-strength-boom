@@ -2,22 +2,22 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Organised Fitness/Gym participation by Australian state and territory.",
   "title": {
-  "text": "Where Organised Fitness/Gym Participation Is Highest",
-  "subtitle": "State and territory participation rates, AusPlay 2025",
-  "anchor": "middle",
-  "fontSize": 18,
-  "subtitleFontSize": 12,
-  "fontWeight": "bold",
-  "offset": 15
-},
-  "width": 650,
-  "height": 360,
+    "text": "Where Organised Fitness/Gym Participation Is Highest",
+    "subtitle": "State and territory participation rates, AusPlay 2025",
+    "anchor": "middle",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "fontWeight": "bold",
+    "offset": 15
+  },
+  "width": 900,
+  "height": 430,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
   "data": {
     "url": "data_clean/state_fitness_participation.csv"
-  },
-  "mark": {
-    "type": "bar",
-    "cornerRadiusEnd": 4
   },
   "encoding": {
     "y": {
@@ -33,36 +33,135 @@
       "scale": {
         "domain": [0, 20]
       }
-    },
-    "color": {
-      "field": "total",
-      "type": "quantitative",
-      "scale": {
-        "scheme": "greens"
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#cbd5e1",
+        "strokeWidth": 3
       },
-      "legend": null
-    },
-    "tooltip": [
-      {
-        "field": "state",
-        "type": "nominal",
-        "title": "State/Territory"
-      },
-      {
-        "field": "total",
-        "type": "quantitative",
-        "title": "Total (%)"
-      },
-      {
-        "field": "male",
-        "type": "quantitative",
-        "title": "Male (%)"
-      },
-      {
-        "field": "female",
-        "type": "quantitative",
-        "title": "Female (%)"
+      "encoding": {
+        "x": {
+          "datum": 0
+        },
+        "x2": {
+          "field": "total"
+        }
       }
-    ]
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 230,
+        "opacity": 0.95
+      },
+      "encoding": {
+        "color": {
+          "condition": [
+            {
+              "test": "datum.state == 'Australian Capital Territory'",
+              "value": "#16a34a"
+            },
+            {
+              "test": "datum.state == 'Northern Territory'",
+              "value": "#22c55e"
+            }
+          ],
+          "value": "#64748b"
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State/Territory"
+          },
+          {
+            "field": "total",
+            "type": "quantitative",
+            "title": "Total (%)"
+          },
+          {
+            "field": "male",
+            "type": "quantitative",
+            "title": "Male (%)"
+          },
+          {
+            "field": "female",
+            "type": "quantitative",
+            "title": "Female (%)"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 12,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#111827"
+      },
+      "encoding": {
+        "text": {
+          "field": "total",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.state == 'Australian Capital Territory'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 55,
+        "dy": -12,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#065f46"
+      },
+      "encoding": {
+        "text": {
+          "value": "Highest participation"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.state == 'Tasmania'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 55,
+        "dy": 12,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#475569"
+      },
+      "encoding": {
+        "text": {
+          "value": "Lowest rate"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    }
   }
 }

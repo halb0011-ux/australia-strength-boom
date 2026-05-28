@@ -10,7 +10,7 @@
     "fontWeight": "bold",
     "offset": 15
   },
-  "width": 680,
+  "width": 900,
   "height": 390,
   "data": {
     "url": "data_clean/fitness_barriers.csv"

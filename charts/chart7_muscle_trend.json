@@ -2,25 +2,22 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Trend in adults meeting the muscle-strengthening guideline by sex.",
   "title": {
-  "text": "Adults Meeting Muscle-Strengthening Guidelines",
-  "subtitle": "Percentage of adults aged 18–64 meeting the guideline, AIHW 2016–2018",
-  "anchor": "middle",
-  "fontSize": 18,
-  "subtitleFontSize": 12,
-  "fontWeight": "bold",
-  "offset": 15
-},
-  "width": 650,
-  "height": 360,
+    "text": "Adults Meeting Muscle-Strengthening Guidelines",
+    "subtitle": "Percentage of adults aged 18–64 meeting the guideline, AIHW 2016–2018",
+    "anchor": "middle",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "fontWeight": "bold",
+    "offset": 15
+  },
+  "width": 900,
+  "height": 420,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
   "data": {
-    "values": [
-      {"year": 2016, "sex": "Male", "percentage": 40.4},
-      {"year": 2017, "sex": "Male", "percentage": 44.5},
-      {"year": 2018, "sex": "Male", "percentage": 43.9},
-      {"year": 2016, "sex": "Female", "percentage": 32.0},
-      {"year": 2017, "sex": "Female", "percentage": 35.2},
-      {"year": 2018, "sex": "Female", "percentage": 35.7}
-    ]
+    "url": "data_clean/muscle_strengthening_trend.csv"
   },
   "mark": {
     "type": "line",
@@ -52,9 +49,21 @@
       "title": "Sex"
     },
     "tooltip": [
-      {"field": "year", "type": "ordinal", "title": "Year"},
-      {"field": "sex", "type": "nominal", "title": "Sex"},
-      {"field": "percentage", "type": "quantitative", "title": "Percentage (%)"}
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "sex",
+        "type": "nominal",
+        "title": "Sex"
+      },
+      {
+        "field": "percentage",
+        "type": "quantitative",
+        "title": "Percentage (%)"
+      }
     ]
   }
 }
